@@ -1,0 +1,34 @@
+[Não vale NOTA] Exercício de Fixação IO arquivos em Java
+Considere a base de dados de docentes da UFRN disponível em: https://dados.ufrn.br/dataset/8bf1a468-48ff-4f4d-95ee-b17b7a3a5592/resource/6a8e5461-e748-45c6-aac6-432188d88dde/download/docentes.csv.
+
+Considere também o dicionário de dados desta base disponível em: https://dados.ufrn.br/dataset/8bf1a468-48ff-4f4d-95ee-b17b7a3a5592/resource/83988d39-6dd6-4003-91ca-b5ebdbe740f5/download/docentesdicionario.pdf
+
+1) crie um projeto Java (no build tools) analisadocentes.prj no vscode ou intelliJ (ou playground como este: https://www.online-java.com)
+
+2) crie uma classe Java para a entidade Docente, com os atributos:
+
+siape: string
+
+nome: string
+
+classe_funcional: string
+
+lotacao: string
+
+admissao: string (ou localdate, localdatatime..., testar) 
+
+3) usando a classe utilitária MyFileHandle com os métodos write e read, você deve:
+
+a) ler o csv e, para cada docente, criar seu e-mail institucional no formato primeironome.ultimonome@ufrn.br (caso feliz). Para os casos de emails repetidos, criar no formato primeironome.siape.ultimonome@ufrn.br*
+
+No caso basta os 3 primeiros digitos do siape
+
+4) estes e-mails devem ir para um arraylist emailDocentes
+
+5) salvar o conteúdo deste arraylist em arquivo .csv com nome listaemails.csv, no formato:
+
+siape;nome;email
+
+6) ordernar o arrayList listDocentes pelo campo admissao em ordem decrescente (quem entrou mais recente no topo da listagem)
+
+7) contar quantos docentes são da classe_funcional TITULAR e mostrar o valor percentual em relação ao total de docentes da base. 
