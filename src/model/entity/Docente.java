@@ -1,6 +1,8 @@
 package src.model.entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import utils.Colors;
 
 public class Docente
 {
@@ -9,7 +11,28 @@ public class Docente
   private String classe_funcional;
   private String lotacao;
   private String email;
-  private LocalDate admissao;
+  private String admissao;
+
+  private void createEmail()
+  {
+    String[] nomeEmail = this.nome.split(" ");
+
+    int siapeEmail = Integer.parseInt(this.getSiape()) / 10000;
+
+    this.email = nomeEmail[0].toLowerCase() + "." + siapeEmail+ "." + nomeEmail[nomeEmail.length-1].toLowerCase() + "@ufrn.br";
+  }
+
+  //CONSTRUCTORS
+  public Docente() {}
+  public Docente( ArrayList<String> informations )
+  {
+    this.setSiape(informations.get(0));
+    this.setNome(informations.get(1));
+    this.setClasse_funcional(informations.get(2));
+    this.setLotacao(informations.get(3));
+    this.setAdmissao(informations.get(4));
+    this.createEmail();
+  }
 
   //GETTERS
   public String getSiape()
@@ -37,7 +60,7 @@ public class Docente
     return this.email;
   }
 
-  public LocalDate getAdmissao()
+  public String getAdmissao()
   {
     return this.admissao;
   }
@@ -68,8 +91,14 @@ public class Docente
     this.email = email;
   }
 
-  public void setAdmissao( LocalDate admissao )
+  public void setAdmissao( String admissao )
   {
     this.admissao = admissao;
+  }
+
+  @Override
+  public String toString()
+  {
+    return Colors.ANSI_YELLOW + " \nNOME --------------> " + getNome() + "\nSIAPE -------------> " + getSiape() + "\nCLASSE FUNCIONAL --> " + getClasse_funcional() + "\nLOTAÇÃO -----------> " + getLotacao() + "\nE-MAIL ------------> " + getEmail() + "\nADIMISSÃO ---------> " + this.admissao.toString() + Colors.ANSI_RESET;
   }
 }
